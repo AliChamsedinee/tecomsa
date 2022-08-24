@@ -1,0 +1,1 @@
+from . import line_of_business_inherit
