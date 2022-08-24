@@ -1,0 +1,1 @@
+from . import attendence_note
