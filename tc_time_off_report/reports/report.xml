@@ -1,0 +1,12 @@
+<odoo>
+
+    <report 
+        id="report_time_off"
+        string = "Time off report"
+        model = "hr.leave.allocation"
+        report_type = "qweb-pdf"
+        name = "tc_time_off_report.time_off"
+        file = "tc_time_off_report.time_off"
+        />
+
+</odoo>
