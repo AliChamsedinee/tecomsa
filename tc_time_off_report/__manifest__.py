@@ -9,7 +9,12 @@
     "category": "Services/Library",
     "depends": ["base","hr_holidays"],
     "data": [
-        # "views/business_contact_inherit.xml",
+        # "views/time_off_report.xml",
+        "views/hr_employee.xml",
+         "views/time_off_export_view.xml",
+        # "security/report_security.xml",
+        # "security/ir.model.access.csv",
+        # "wizard/export_time_off_wizard.xml",
         "reports/report.xml",
         "reports/time_off_report.xml",
     ],

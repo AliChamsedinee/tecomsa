@@ -11,12 +11,12 @@
                         <th style="font-size:25px; border: 1px solid black; width:20%; height:40px">Duration</th>
                         <th style="font-size:25px; border: 1px solid black; width:20%; height:40px">Taken</th>
                     </tr>
-                    <t t-foreach="docs" t-as="doc">
+                    <t t-foreach='data["employees"]' t-as="emp">
                         <tr>
-                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="doc.employee_id.name"/></td>
-                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="doc.holiday_status_id.display_name"/></td>
-                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="doc.duration_display"/></td>
-                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="doc.leaves_taken"/></td>
+                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="emp.name"/></td>
+                            <!-- <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="record.holiday_status_id.display_name"/></td>
+                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="record.duration_display"/></td>
+                            <td style="font-size:20px; border: 1px solid black; padding-left:10px; height:40px"><span t-esc="record.leaves_taken"/></td> -->
                         </tr>
                     </t>
                 </tbody>
