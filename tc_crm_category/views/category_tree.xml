@@ -1,0 +1,25 @@
+<odoo>
+
+    <record id="category_leads_tree_view" model="ir.ui.view">
+        <field name="name">category.leads.tree.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="team_id" position="after">
+                        <field name="category"/>
+                </field>
+            </field>
+    </record>
+
+    <record id="category_oppor_tree_view" model="ir.ui.view">
+        <field name="name">category.oppor.tree.view</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="arch" type="xml">
+                <field name="stage_id" position="after">
+                        <field name="category"/>
+                </field>
+            </field>
+    </record>
+
+</odoo>
