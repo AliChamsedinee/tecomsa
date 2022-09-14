@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access.time.off,access_time_off,tc_time_off_report.model_time_off,base.group_user,1,1,1,1

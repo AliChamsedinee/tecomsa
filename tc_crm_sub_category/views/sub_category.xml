@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="view_tree_sub_category" model="ir.ui.view">
+        <field name="name">CRM Sub Category List</field>
+        <field name="model">crm.sub.category</field>
+        <field name="arch" type="xml">
+            <tree editable = "bottom">
+                <field name="name" />
+                <field name="code" />
+                <field name="category" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>

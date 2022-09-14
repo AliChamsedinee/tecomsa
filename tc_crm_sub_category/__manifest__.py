@@ -1,15 +1,15 @@
 {
-    "name": "Line of Business",
-    "summary": "Manage library catalog and book lending.",
+    "name": "CRM Sub Category",
+    "summary": "CRM Sub Category",
     "author": "Daniel Reis",
     "license": "AGPL-3",
     "website": "https://github.com/PacktPublishing"
                "/Odoo-15-Development-Essentials",
     "version": "15.0.1.0.0",
     "category": "Services/Library",
-    "depends": ["base","contacts"],
+    "depends": ["base","crm"],
     "data": [
-        "views/line_of_business_menu.xml",
-        "views/line_of_business_view.xml",
+        "views/sub_category_inherit.xml",
+        "views/sub_category.xml",
     ],
 }
