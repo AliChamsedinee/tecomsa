@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="export_action" model="ir.actions.server">
+            <field name="name">Employee time off</field>
+            <!-- <field name="type">ir.actions.server</field> -->
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="binding_model_id" ref="model_hr_employee" />
+            <!-- <field name="binding_view_types">list</field> -->
+            <field name="state">code</field>
+            <field name="code">
+                action = model.to_view(records)
+            </field>
+        </record>
+    </data>
+</odoo>
