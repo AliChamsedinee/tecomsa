@@ -1,0 +1,43 @@
+<odoo>
+
+    <record id="view_form_business" model="ir.ui.view">
+        <field name="name">Line of Business Form</field>
+        <field name="model">line.of.business</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <group>
+                    <field name="name" />
+                </group>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="view_tree_business" model="ir.ui.view">
+        <field name="name">Line of Business List</field>
+        <field name="model">line.of.business</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <field name="name" />
+                <field name="code" />
+            </tree>
+            
+        </field>
+    </record>
+
+    <!-- <record id="inherit_sale_order" model="ir.ui.view">
+        <field name="name">Inherit contact line of business</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[2]/field[@name='property_product_pricelist']" position="after">
+                    <group>
+                        <field name="contact_code"/>
+                    </group>
+                </xpath>
+            </field>
+    </record> -->
+
+</odoo>
