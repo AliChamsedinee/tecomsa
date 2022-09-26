@@ -1,0 +1,219 @@
+<odoo>
+
+    <menuitem id="menu_release_notes" name="Release Notes" />
+
+    <record id="action_release_notes" model="ir.actions.act_window">
+        <field name="name">Release Notes</field>
+        <field name="res_model">release.notes</field>
+        <field name="view_mode">tree,form,calendar,graph,activity,kanban</field>
+    </record>
+
+    <menuitem id="menu_notes"
+            name="Notes"
+            parent="menu_release_notes"
+            action="action_release_notes"
+    />
+
+    <record id="release_notes_tree_view" model="ir.ui.view">
+        <field name="name">Release Notes List</field>
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="project"/>
+                <field name="task"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="release_notes_form_view" model="ir.ui.view">
+        <field name="name">Release Notes Form</field>
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1" options="{'clickable' : '1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="project"/>
+                            <field name="task" domain="[('project_id','=',project)]"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <record id="release_notes_search_view" model="ir.ui.view">
+        <field name="name">Release Notes Search</field>
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+                <search>
+                        <field name="name"/>
+                        <field name="project"/>
+                        <field name="task"/>
+                        <field name="date"/>
+                        <field name="state"/>
+                        <field name="description"/>
+
+                        <filter name="state_dev" string="Dev" domain="[('state','=','dev')]"/>
+                        <filter name="state_stage" string="Stage" domain="[('state','=','stage')]"/>
+                        <filter name="state_prod" string="Production" domain="[('state','=','production')]"/>
+
+                        <filter name="project" string="Project" context="{'group_by':'project'}"/>
+                        <filter name="task" string="Task" context="{'group_by':'task'}"/>
+                        <filter name="state" string="State" context="{'group_by':'state'}"/>
+                        <filter name="date" string="Date" context="{'group_by':'date'}"/>
+                </search>
+        </field>
+    </record>
+
+    <record id="view_calendar_release_notes" model="ir.ui.view">
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date">
+                <field name="name" />
+                <field name="project" />
+                <field name="task" />
+                <field name="state" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_activity_release_notes" model="ir.ui.view">
+    <field name="model">release.notes</field>
+    <field name="arch" type="xml">
+        <activity string="Release Notes">
+        <templates>
+            <div t-name="activity-box">
+            <div>
+                <field name="name" />
+            </div>
+            </div>
+        </templates>
+        </activity>
+    </field>
+    </record>
+
+    <!-- <record id="view_pivot_release_notes" model="ir.ui.view">
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="stage_id" type="col" />
+                <field name="member_id" />
+                <field name="request_date" interval="week" />
+                <field name="num_books" type="measure" />
+            </pivot>
+        </field>
+    </record> -->
+
+    <record id="view_graph_release_notes" model="ir.ui.view">
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="state" />
+                <field name="task" type="measure" string="Task"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_kanban_release_notes" model="ir.ui.view">
+        <field name="model">release.notes</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="name"/>
+                <field name="project"/>
+                <field name="task"/>
+                <field name="state"/>
+                <field name="date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+
+                            <div class="o_dropdown_kanban dropdown">
+                                <!-- Top-right drop down menu ... -->
+                                <a class="dropdown-toggle btn"
+                                    role="button" data-toggle="dropdown"
+                                    title="Dropdown menu" href="#">
+                                    <span class="fa fa-ellipsis-v" />
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <!-- Edit menu option -->
+                                    <t t-if="widget.editable">
+                                    <a role="menuitem" type="edit"
+                                        class="dropdown-item">Edit</a>
+                                    </t>
+                                    <!-- Delete menu option -->
+                                    <t t-if="widget.deletable">
+                                    <a role="menuitem" type="delete"
+                                        class="dropdown-item">Delete</a>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <div class="o_kanban_record_title">
+                                <strong><field name="name"/></strong>
+                            </div>
+
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Project: <field name="project"/>
+                                    </li>
+                                    <li>
+                                        Task: <field name="task"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_set_to_dev" model="ir.actions.server">
+        <field name="name">Change to Dev</field>
+        <field name="model_id" ref="model_release_notes"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.to_dev(records)
+        </field>
+    </record>
+
+     <record id="action_set_to_production" model="ir.actions.server">
+        <field name="name">Change to Production</field>
+        <field name="model_id" ref="model_release_notes"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.to_production(records)
+        </field>
+    </record>
+
+     <record id="action_set_to_stage" model="ir.actions.server">
+        <field name="name">Change to Stage</field>
+        <field name="model_id" ref="model_release_notes"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.to_stage(records)
+        </field>
+    </record>
+    
+
+</odoo>
