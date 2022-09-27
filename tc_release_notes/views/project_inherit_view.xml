@@ -1,0 +1,29 @@
+<odoo>
+
+    <record id="inherit_project_release_notes" model="ir.ui.view">
+        <field name="name">inherit.project.release.notes</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page[2]" position="after">
+                <page name="release_notes" string="Release Notes">
+                    <field name="release_notes"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_task_release_notes" model="ir.ui.view">
+        <field name="name">inherit.task.release.notes</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook/page[5]" position="after">
+                <page name="release_notes" string="Release Notes">
+                    <field name="release_notes"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

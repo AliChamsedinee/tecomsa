@@ -1,6 +1,6 @@
 from odoo import fields, models
 
-class business(models.Model): 
+class ReleaseNotes(models.Model): 
 
 
     _name = "release.notes"

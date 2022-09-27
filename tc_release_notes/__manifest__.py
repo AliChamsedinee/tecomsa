@@ -11,6 +11,6 @@
     "data": [
         'security/ir.model.access.csv',
         "views/release_notes_view.xml",
-        # "views/release_notes_kanban_view.xml",
+        "views/project_inherit_view.xml",
     ],
 }
